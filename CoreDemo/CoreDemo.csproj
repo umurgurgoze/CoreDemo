@@ -8,4 +8,10 @@
     <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="5.0.2" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\CoreDemo.Business\CoreDemo.Business.csproj" />
+    <ProjectReference Include="..\CoreDemo.DataAccess\CoreDemo.DataAccess.csproj" />
+    <ProjectReference Include="..\CoreDemo.Entity\CoreDemo.Entity.csproj" />
+  </ItemGroup>
+
 </Project>
