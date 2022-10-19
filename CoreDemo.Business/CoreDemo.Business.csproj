@@ -9,4 +9,8 @@
     <ProjectReference Include="..\CoreDemo.Entity\CoreDemo.Entity.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="ValidationRules\" />
+  </ItemGroup>
+
 </Project>

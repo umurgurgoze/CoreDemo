@@ -7,12 +7,8 @@ using System.Threading.Tasks;
 
 namespace CoreDemo.DataAccess.Abstract
 {
-    public interface ICategoryDal
+    public interface ICategoryDal : IGenericDal<Category>
     {
-        List<Category> ListAllCategory();
-        void AddCategory(Category category);
-        void RemoveCategory(Category category);
-        void UpdateCategory(Category category);
-        Category GetById(int id);
+
     }
 }

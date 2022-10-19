@@ -7,8 +7,7 @@ using System.Threading.Tasks;
 
 namespace CoreDemo.DataAccess.Abstract
 {
-    public interface IBlogDal : IGenericDal<Blog>
+    public interface ICommentDal : IGenericDal<Comment>
     {
-        
     }
 }
