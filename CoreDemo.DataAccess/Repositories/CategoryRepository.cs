@@ -18,9 +18,29 @@ namespace CoreDemo.DataAccess.Repositories
             c.SaveChanges();
         }
 
+        public void Delete(Category t)
+        {
+            throw new NotImplementedException();
+        }
+
         public Category GetById(int id)
         {
             return c.Categories.Find(id);
+        }
+
+        public Category GetByID(int id)
+        {
+            throw new NotImplementedException();
+        }
+
+        public List<Category> GetListAll()
+        {
+            throw new NotImplementedException();
+        }
+
+        public void Insert(Category t)
+        {
+            throw new NotImplementedException();
         }
 
         public List<Category> ListAllCategory()
@@ -32,6 +52,11 @@ namespace CoreDemo.DataAccess.Repositories
         {
             c.Remove(category);
             c.SaveChanges();
+        }
+
+        public void Update(Category t)
+        {
+            throw new NotImplementedException();
         }
 
         public void UpdateCategory(Category category)

@@ -19,10 +19,30 @@ namespace CoreDemo.DataAccess.Repositories
             c.SaveChanges();
         }
 
+        public void Delete(Blog t)
+        {
+            throw new NotImplementedException();
+        }
+
         public Blog GetById(int id)
         {
             using var c = new Context();
             return c.Blogs.Find(id);
+        }
+
+        public Blog GetByID(int id)
+        {
+            throw new NotImplementedException();
+        }
+
+        public List<Blog> GetListAll()
+        {
+            throw new NotImplementedException();
+        }
+
+        public void Insert(Blog t)
+        {
+            throw new NotImplementedException();
         }
 
         public List<Blog> ListAllBlog()
@@ -36,6 +56,11 @@ namespace CoreDemo.DataAccess.Repositories
             using var c = new Context();
             c.Remove(blog);
             c.SaveChanges();
+        }
+
+        public void Update(Blog t)
+        {
+            throw new NotImplementedException();
         }
 
         public void UpdateCategory(Blog blog)
