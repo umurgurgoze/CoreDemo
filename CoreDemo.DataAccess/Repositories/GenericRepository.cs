@@ -3,6 +3,7 @@ using CoreDemo.DataAccess.Concrete;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Linq.Expressions;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -34,6 +35,12 @@ namespace CoreDemo.DataAccess.Repositories
             using var c = new Context();
             c.Add(t);
             c.SaveChanges();
+        }
+
+        public List<T> GetListAll(Expression<Func<T, bool>> predicate)
+        {
+            using var c = new Context();
+            return c.Set<T>().Where(predicate).ToList();
         }
 
         public void Update(T t)

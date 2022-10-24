@@ -3,15 +3,15 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.0.32112.339
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CoreDemo", "CoreDemo\CoreDemo.csproj", "{5155B863-FCEA-49BD-8202-7D67B1002185}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CoreDemo", "CoreDemo\CoreDemo.csproj", "{5155B863-FCEA-49BD-8202-7D67B1002185}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CoreDemo.Entity", "CoreDemo.Entity\CoreDemo.Entity.csproj", "{B37251FD-8386-4CFD-A2BB-C0EB2B1634A4}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CoreDemo.Entity", "CoreDemo.Entity\CoreDemo.Entity.csproj", "{B37251FD-8386-4CFD-A2BB-C0EB2B1634A4}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CoreDemo.DataAccess", "CoreDemo.DataAccess\CoreDemo.DataAccess.csproj", "{47D7923D-D007-4B33-85B5-592EE03B0140}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CoreDemo.DataAccess", "CoreDemo.DataAccess\CoreDemo.DataAccess.csproj", "{47D7923D-D007-4B33-85B5-592EE03B0140}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CoreDemo.Business", "CoreDemo.Business\CoreDemo.Business.csproj", "{C33664A7-3391-4472-BAE6-62045517B3A5}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CoreDemo.Business", "CoreDemo.Business\CoreDemo.Business.csproj", "{C33664A7-3391-4472-BAE6-62045517B3A5}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CoreDemo.Core", "CoreDemo.Core\CoreDemo.Core.csproj", "{63B8E677-9A8D-4822-900F-E81741757367}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CoreDemo.Core", "CoreDemo.Core\CoreDemo.Core.csproj", "{63B8E677-9A8D-4822-900F-E81741757367}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
