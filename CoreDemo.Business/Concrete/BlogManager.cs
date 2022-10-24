@@ -46,5 +46,10 @@ namespace CoreDemo.Business.Concrete
         {
             return _blogDal.GetListAll();
         }
+
+        public List<Blog> GetBlogListWithCategory()
+        {
+            return _blogDal.GetListWithCategory();
+        }
     }
 }
