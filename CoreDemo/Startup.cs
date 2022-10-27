@@ -1,6 +1,9 @@
+using Microsoft.AspNetCore.Authentication.Cookies;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
+using Microsoft.AspNetCore.Mvc.Authorization;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
@@ -24,6 +27,28 @@ namespace CoreDemo
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllersWithViews();
+            /*-------------------------------------------------------------------*/
+            //##  Session Ekle / Aþaðýda App.UseSession() olarak ayrýca ekleniyor. ##
+            services.AddSession();
+            /*-------------------------------------------------------------------*/
+
+            /*-------------------------------------------------------------------*/
+            //##  Proje Seviyesinde Authentication ##
+            services.AddMvc(config =>
+            {
+                var policy = new AuthorizationPolicyBuilder().RequireAuthenticatedUser().Build();
+                config.Filters.Add(new AuthorizeFilter(policy));
+            });
+            /*-------------------------------------------------------------------*/
+            services.AddMvc();
+
+            /*-------------------------------------------------------------------*/
+            //##  Return Login Url ##
+            services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme).AddCookie(x =>
+            {
+                x.LoginPath = "/Login/Index";
+            });
+            /*-------------------------------------------------------------------*/
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -40,13 +65,14 @@ namespace CoreDemo
                 app.UseHsts();
             }
             /*-------------------------------------------------------------------*/
-            //404 Sayfasý
+            //## 404 Sayfasý ##
             app.UseStatusCodePagesWithReExecute("/ErrorPage/Error1", "?code={0}");
             //Hata olduðunda bu adrese status code ile birlikte gidecek.Ýstersek bu kod ile her durum için farklý bir senaryo oluþturabiliriz.
             /*-------------------------------------------------------------------*/
             app.UseHttpsRedirection();
             app.UseStaticFiles();
 
+            app.UseSession();
             app.UseRouting();
 
             app.UseAuthorization();
