@@ -29,7 +29,7 @@ namespace CoreDemo
             services.AddControllersWithViews();
             /*-------------------------------------------------------------------*/
             //##  Session Ekle / Aþaðýda App.UseSession() olarak ayrýca ekleniyor. ##
-            services.AddSession();
+            //services.AddSession();
             /*-------------------------------------------------------------------*/
 
             /*-------------------------------------------------------------------*/
@@ -49,6 +49,14 @@ namespace CoreDemo
                 x.LoginPath = "/Login/Index";
             });
             /*-------------------------------------------------------------------*/
+            services.ConfigureApplicationCookie(options =>
+            {
+                //## Cookie Ayarlarý
+                options.Cookie.HttpOnly = true;
+                options.ExpireTimeSpan = TimeSpan.FromMinutes(5);
+                options.LoginPath = "/Login/Index/";
+                options.SlidingExpiration = true;
+            });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -64,15 +72,22 @@ namespace CoreDemo
                 // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
                 app.UseHsts();
             }
+
             /*-------------------------------------------------------------------*/
             //## 404 Sayfasý ##
             app.UseStatusCodePagesWithReExecute("/ErrorPage/Error1", "?code={0}");
             //Hata olduðunda bu adrese status code ile birlikte gidecek.Ýstersek bu kod ile her durum için farklý bir senaryo oluþturabiliriz.
             /*-------------------------------------------------------------------*/
+
             app.UseHttpsRedirection();
             app.UseStaticFiles();
 
-            app.UseSession();
+            /*-------------------------------------------------------------------*/
+            //##Authentication eklendi.
+            app.UseAuthentication();
+            /*-------------------------------------------------------------------*/
+
+            //app.UseSession();
             app.UseRouting();
 
             app.UseAuthorization();
