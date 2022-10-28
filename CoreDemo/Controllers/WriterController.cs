@@ -18,6 +18,11 @@ namespace CoreDemo.Controllers
         public IActionResult WriterMail()
         {
             return View();
-        }        
+        }
+        [AllowAnonymous]
+        public IActionResult Test()
+        {
+            return View();
+        }
     }
 }
