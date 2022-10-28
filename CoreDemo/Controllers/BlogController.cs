@@ -14,6 +14,7 @@ namespace CoreDemo.Controllers
     public class BlogController : Controller
     {
         BlogManager bm = new BlogManager(new EfBlogRepository());
+        CategoryManager cm = new CategoryManager(new EfCategoryRepository()); //SelectListItem oluşturmak için
         public IActionResult Index()
         {
             var values = bm.GetBlogListWithCategory(); // Eager Loading
@@ -34,7 +35,6 @@ namespace CoreDemo.Controllers
         [HttpGet]
         public IActionResult BlogAdd()
         {
-            CategoryManager cm = new CategoryManager(new EfCategoryRepository());
             List<SelectListItem> categoryValues = (from x in cm.GetList()
                                                    select new SelectListItem
                                                    {
@@ -75,12 +75,23 @@ namespace CoreDemo.Controllers
         [HttpGet]
         public IActionResult EditBlog(int id)
         {
+            List<SelectListItem> categoryValues = (from x in cm.GetList()
+                                                   select new SelectListItem
+                                                   {
+                                                       Text = x.CategoryName,
+                                                       Value = x.CategoryId.ToString()
+                                                   }).ToList();
+            ViewBag.cv = categoryValues;
             var blogValue = bm.TGetById(id);
             return View(blogValue);
         }
         [HttpPost]
         public IActionResult EditBlog(Blog blog)
         {
+            blog.WriterId = 1;
+            blog.BlogCreateDate = DateTime.Parse(DateTime.Now.ToShortDateString());
+            blog.BlogStatus = true;
+            bm.TUpdate(blog);
             return RedirectToAction("BlogListByWriter");
         }
     }
