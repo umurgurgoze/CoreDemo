@@ -39,12 +39,12 @@ namespace CoreDemo.Business.Concrete
 
         public Writer TGetById(int id)
         {
-            throw new NotImplementedException();
+            return _writerDal.GetByID(id);
         }
 
         public void TUpdate(Writer t)
         {
-            throw new NotImplementedException();
+            _writerDal.Update(t);
         }
     }
 }
