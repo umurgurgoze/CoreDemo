@@ -19,5 +19,7 @@ namespace CoreDemo.Entity.Concrete
         public bool WriterStatus { get; set; }
         public List<Blog> Blogs { get; set; }
 
+
+
     }
 }
