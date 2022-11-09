@@ -1,5 +1,6 @@
 ﻿using CoreDemo.Business.Concrete;
 using CoreDemo.Business.ValidationRules;
+using CoreDemo.DataAccess.Concrete;
 using CoreDemo.DataAccess.EntityFramework;
 using CoreDemo.Entity.Concrete;
 using CoreDemo.Models;
@@ -8,6 +9,7 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.IO;
+using System.Linq;
 
 namespace CoreDemo.Controllers
 {
@@ -18,6 +20,11 @@ namespace CoreDemo.Controllers
         [Authorize]
         public IActionResult Index()
         {
+            var userMail = User.Identity.Name;
+            ViewBag.v = userMail;
+            Context c = new Context();
+            var writerName = c.Writers.Where(x => x.WriterMail == userMail).Select(y => y.WriterName).FirstOrDefault();
+            ViewBag.v2 = writerName;
             return View();
         }
         public IActionResult WriterProfile()
@@ -43,15 +50,18 @@ namespace CoreDemo.Controllers
         {
             return PartialView();
         }
-        [AllowAnonymous]
+
         [HttpGet]
         public IActionResult WriterEditProfile()
         {
-            var writerValues = wm.TGetById(1);
+            Context c = new Context();
+            var userMail = User.Identity.Name;
+            var writerID = c.Writers.Where(x => x.WriterMail == userMail).Select(y => y.WriterId).FirstOrDefault();
+            var writerValues = wm.TGetById(writerID);
             return View(writerValues);
 
         }
-        [AllowAnonymous]
+
         [HttpPost]
         public IActionResult WriterEditProfile(Writer writer)
         {
