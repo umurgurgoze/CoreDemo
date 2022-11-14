@@ -4,6 +4,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 VisualStudioVersion = 17.0.32112.339
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CoreDemo", "CoreDemo\CoreDemo.csproj", "{5155B863-FCEA-49BD-8202-7D67B1002185}"
+	ProjectSection(ProjectDependencies) = postProject
+		{033619E9-A604-4C77-A3AB-6925075CEBF5} = {033619E9-A604-4C77-A3AB-6925075CEBF5}
+	EndProjectSection
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CoreDemo.Entity", "CoreDemo.Entity\CoreDemo.Entity.csproj", "{B37251FD-8386-4CFD-A2BB-C0EB2B1634A4}"
 EndProject
@@ -13,7 +16,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CoreDemo.Business", "CoreDe
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CoreDemo.Core", "CoreDemo.Core\CoreDemo.Core.csproj", "{63B8E677-9A8D-4822-900F-E81741757367}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BlogApiDemo", "BlogApiDemo\BlogApiDemo.csproj", "{033619E9-A604-4C77-A3AB-6925075CEBF5}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BlogApiDemo", "BlogApiDemo\BlogApiDemo.csproj", "{033619E9-A604-4C77-A3AB-6925075CEBF5}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
