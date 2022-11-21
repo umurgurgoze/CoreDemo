@@ -1,11 +1,13 @@
 ﻿using CoreDemo.Business.Concrete;
 using CoreDemo.DataAccess.EntityFramework;
 using CoreDemo.Entity.Concrete;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System;
 
 namespace CoreDemo.Controllers
 {
+    [AllowAnonymous]
     public class NewsLetterController : Controller
     {
         NewsLetterManager nm = new NewsLetterManager(new EfNewsLetterRepository());
@@ -19,7 +21,7 @@ namespace CoreDemo.Controllers
         {
             newsLetter.MailStatus = true;
             nm.AddNewsLetter(newsLetter);
-            return PartialView(); 
+            return PartialView();
             //Böyle yaptığımızda yeni bir sayfada partial açıp dönüyor.
             //Bunun yerine IActionResult türünden RedirectToAction("Index","Blog") da dönülebilir.AJAX'ta kullanılabilir.
         }

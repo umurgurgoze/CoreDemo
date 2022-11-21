@@ -8,6 +8,6 @@ using System.Threading.Tasks;
 namespace CoreDemo.DataAccess.Abstract
 {
     public interface ICommentDal : IGenericDal<Comment>
-    {
+    {        List<Comment> GetCommentListWithBlog();
     }
 }

@@ -1,7 +1,10 @@
+using CoreDemo.DataAccess.Concrete;
+using CoreDemo.Entity.Concrete;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.AspNetCore.Mvc.Authorization;
 using Microsoft.Extensions.Configuration;
@@ -26,6 +29,13 @@ namespace CoreDemo
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddDbContext<Context>();
+            services.AddIdentity<AppUser, AppRole>(x =>
+            {
+                x.Password.RequireUppercase = false;
+                x.Password.RequireLowercase = false;
+                x.Password.RequireNonAlphanumeric = false;
+            }).AddEntityFrameworkStores<Context>();
             services.AddControllersWithViews();
             /*-------------------------------------------------------------------*/
             //##  Session Ekle / Aþaðýda App.UseSession() olarak ayrýca ekleniyor. ##
@@ -53,8 +63,9 @@ namespace CoreDemo
             {
                 //## Cookie Ayarlarý
                 options.Cookie.HttpOnly = true;
-                options.ExpireTimeSpan = TimeSpan.FromMinutes(5);
+                options.ExpireTimeSpan = TimeSpan.FromMinutes(10);
                 options.LoginPath = "/Login/Index/";
+                options.AccessDeniedPath = new PathString("/Login/AccessDenied");
                 options.SlidingExpiration = true;
             });
         }

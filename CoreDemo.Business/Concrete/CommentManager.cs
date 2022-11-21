@@ -23,6 +23,11 @@ namespace CoreDemo.Business.Concrete
             _commentDal.Insert(comment);
         }
 
+        public List<Comment> GetCommentWithBlog()
+        {
+            return _commentDal.GetCommentListWithBlog();
+        }
+
         public List<Comment> GetList(int id)
         {
             return _commentDal.GetListAll(x => x.BlogId == id);
